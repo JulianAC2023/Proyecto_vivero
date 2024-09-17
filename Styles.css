@@ -1,0 +1,290 @@
+/* Reset de estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2, h3, h4 {
+    color: #4A4A4A;
+}
+
+/* Barra de navegación */
+nav {
+    background-color: #A8D5BA;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease; /* Animación de transición */
+}
+
+nav ul li a:hover {
+    color: #ffffff; /* Cambia el color al hacer hover */
+}
+
+nav ul li a:focus {
+    color: #5a5757; /* Cambia el color al hacer clic */
+}
+
+/* Sección de bienvenida */
+#inicio {
+    text-align: center;
+    padding: 100px 0;
+}
+
+#inicio h1 {
+    font-size: 3em;
+}
+
+/* Sección de productos */
+#productos {
+    background-color: #fff;
+    padding: 50px 0;
+}
+
+.producto {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+img {
+    width: 80px !important;
+    height: 140px !important;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.producto h3 {
+    margin-top: 20px;
+}
+
+/* Sección de contacto */
+#contacto {
+    background-color: #f0f0f0;
+    padding: 50px 0;
+}
+
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form textarea {
+    height: 150px;
+}
+
+form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #A8D5BA;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #005200;
+    color: #fcfcfc;
+}
+
+/* Footer */
+footer {
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Estilos para los botones de redes sociales con imágenes */
+.redes-sociales {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.redes-sociales a {
+    display: inline-block;
+    margin: 0 10px;
+    width: 40px;
+    height: 40px;
+    background-size: 100%;
+    border-radius: 50%;
+}
+
+.icon-facebook {
+    background-image: url('Multimedia/Facebook.jpg');
+}
+
+.icon-twitter {
+    background-image: url('Multimedia/x.jpg');
+}
+
+.icon-instagram {
+    background-image: url('Multimedia/Instagram.jpg');
+}
+
+.redes-sociales a:hover {
+    transform: scale(1.2); /* Aumenta el tamaño al pasar el mouse */
+}
+
+/* Estilo para el botón de WhatsApp */
+#toggleBtn {
+    background-color: #A8D5BA; /* Color de fondo verde claro */
+    color: #000000; /* Color del texto negro */
+    border: none; /* Sin borde */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor a una mano cuando pasa sobre el botón */
+    font-size: 16px; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita para el texto */
+    transition: background-color 0.3s, transform 0.3s; /* Animación para cambios de color y tamaño */
+}
+
+#toggleBtn:hover {
+    background-color: #000000; /* Cambia el color de fondo a azul cuando se pasa el mouse */
+    color: #A8D5BA; /* Cambia el color del texto a blanco */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño del botón */
+}
+
+#toggleBtn:active {
+    background-color: #0056b3; /* Cambia el color de fondo a un azul más oscuro cuando se presiona */
+    transform: scale(1); /* Restablece el tamaño al original */
+}
+
+/* Estilos adicionales para pantallazo y contenido */
+#pantallazo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+#pantallazo h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#pantallazo p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+#contenido {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-btn {
+    display: block;
+    margin-top: 10px;
+}
+
+/* Estilo para el botón de registro */
+.btn-register {
+    background-color: #A8D5BA; /* Color de fondo verde */
+    color: #fff; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor a mano al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.btn-register:hover {
+    background-color: #218838; /* Color de fondo verde oscuro al pasar el ratón */
+}
+
+.btn-primary{
+    background-color: #A8D5BA; /* Color de fondo verde */
+    color: #fff; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor a mano al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */   
+}
+
+.btn-primary:hover{
+    background-color: #218838; /* Color de fondo verde oscuro al pasar el ratón */
+}
+
+.btn-success{
+    background-color: #A8D5BA; /* Color de fondo verde */
+    color: #000000; /* Color del texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer; /* Cambia el cursor a mano al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.btn-success:hover{
+    background-color: #2d2d2d; /* Color de fondo verde */
+    color: #A8D5BA; /* Color del texto blanco */
+
+/* Estilo para el menu desplegable*/
+.navbar-nav .nav-item .dropdown-menu {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+}
+}
+
+.navbar-nav .nav-item .dropdown-item:hover {
+    background-color: #e9ecef;
+}
+
