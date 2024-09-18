@@ -288,3 +288,31 @@ footer {
     background-color: #e9ecef;
 }
 
+.description {
+    /* Establece un alto fijo para la descripción */
+    max-height: 100px; /* Ajusta el alto según tus necesidades */
+    overflow-y: auto; /* Habilita la scrollbar vertical si el contenido excede el alto fijo */
+    margin-bottom: 0; /* Opcional: elimina el margen inferior si lo deseas */
+    font-size:small;
+}
+
+/* Barra de desplazamiento (scrollbar) */
+.description::-webkit-scrollbar {
+    width: 12px; /* Ancho de la scrollbar */
+}
+
+/* Parte de la barra de desplazamiento (scrollbar) */
+.description::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color del fondo del track */
+}
+
+/* Parte deslizable de la barra de desplazamiento (scrollbar thumb) */
+.description::-webkit-scrollbar-thumb {
+    background: #888; /* Color del deslizador */
+    border-radius: 6px; /* Radio de las esquinas del deslizador */
+}
+
+/* Parte deslizable de la barra de desplazamiento (scrollbar thumb) en hover */
+.description::-webkit-scrollbar-thumb:hover {
+    background: #218838; /* Color del deslizador al pasar el ratón */
+}

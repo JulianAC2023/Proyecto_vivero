@@ -6,55 +6,58 @@
     <title>'Pagina principal'</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="Styles.css">
+    
 </head>
 <body>
-    <!-- Botones de redes sociales -->
-    <div class="redes-sociales">
-        <a href="https://www.facebook.com/" class="icon-facebook"></a>
-        <a href="https://x.com/" class="icon-twitter"></a>
-        <a href="https://www.instagram.com/" class="icon-instagram"></a>
-    </div>
 
-    <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-gray">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio</a>
-                    </li>
-                    <!-- Menú desplegable para productos -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Productos
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="Plantas.html">Plantas</a></li>
-                            <li><a class="dropdown-item" href="Accesorios.html">Accesorios</a></li>
-                            <li><a class="dropdown-item" href="Abonos.html">Abonos</a></li>
-                            <li><a class="dropdown-item" href="Semillas.html">Semillas</a></li>
-                            <li><a class="dropdown-item" href="Herramientas.html">Herramientas</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Login.html">Iniciar Sesión</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Registro.html">Registrarse</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Carrito.html">Carrito</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Contacto.html">Contacto</a>
-                    </li>
-                </ul>
-            </div>
+    <!-- Botones de redes sociales -->
+<div class="redes-sociales">
+    <a href="https://www.facebook.com/" class="icon-facebook"></a>
+    <a href="https://x.com/" class="icon-twitter"></a>
+    <a href="https://www.instagram.com/" class="icon-instagram"></a>
+</div>
+
+
+<!-- Barra de navegación -->
+<nav class="navbar navbar-expand-lg navbar-light bg-gray">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Inicio</a>
+                </li>
+                <!-- Menú desplegable para productos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Productos
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="Plantas.php">Plantas</a></li>
+                        <li><a class="dropdown-item" href="Accesorios.php">Accesorios</a></li>
+                        <li><a class="dropdown-item" href="Abonos.php">Abonos</a></li>
+                        <li><a class="dropdown-item" href="Semillas.php">Semillas</a></li>
+                        <li><a class="dropdown-item" href="Herramientas.php">Herramientas</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Login.html">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Registro.html">Registrarse</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Carrito.html">Carrito</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Contacto.html">Contacto</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Sección de nuestras plantas -->
     <section id="plantas">
@@ -84,20 +87,19 @@
                     while($row = $result->fetch_assoc()) {
                         // Formatear el valor para mostrarlo sin decimales y con separador de miles
                         $valor_formateado = number_format($row["Valor"], 0, '.', ',');
-
-                        echo '<div class="col-md-6 col-lg-2 col-sm-12 mt-2">';
-                        echo '    <div class="card">';
-                        echo '        <img src="http://localhost/proyecto_vivero/Multimedia/' . $row["URL_Imagen"] . '" class="card-img-top w-100 img-fluid" alt="' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '">';
-                        echo '        <div class="card-body">';
-                        echo '            <h5 class="card-title">' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '</h5>';
-                        echo '            <p class="card-text">' . htmlspecialchars($row["Descripcion"], ENT_QUOTES, 'UTF-8') . '</p>';
-                        echo '        </div>';
-                        echo '        <div class="card-footer">';
-                        echo '            <p class="card-text"><strong>Precio:</strong> $' . $valor_formateado . '</p>';
-                        echo '            <button class="btn btn-outline-success agregar-carrito" data-nombre="' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '" data-precio="' . $row["Valor"] . '">Agregar al carrito</button>';
+                        echo '    <div class="col-md-6 col-lg-2 col-sm-12 mt-2">';
+                        echo '        <div class="card">';
+                        echo '            <img src="http://localhost/proyecto_vivero/Multimedia/' . htmlspecialchars($row["URL_Imagen"], ENT_QUOTES, 'UTF-8') . '" class="card-img-top w-100 img-fluid" alt="' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '">';
+                        echo '            <div class="card-body">';
+                        echo '                <h5 class="card-title">' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '</h5>';
+                        echo '                <p class="card-text description">' . htmlspecialchars($row["Descripcion"], ENT_QUOTES, 'UTF-8') . '</p>';
+                        echo '            </div>';
+                        echo '            <div class="card-footer">';
+                        echo '                <p class="card-text"><strong>Precio:</strong> $' . $valor_formateado . '</p>';
+                        echo '                <button class="btn btn-outline-success agregar-carrito" data-nombre="' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '" data-precio="' . $row["Valor"] . '">Agregar al carrito</button>';
+                        echo '            </div>';
                         echo '        </div>';
                         echo '    </div>';
-                        echo '</div>';
                     }
                 } else {
                     echo "No hay productos en esta categoría.";

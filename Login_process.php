@@ -2,7 +2,7 @@
 // login_process.php
 
 // Incluir archivo de conexión
-include 'index.php'; // Asegúrate de que este archivo establece la conexión $conexion
+include 'connection.php'; // Asegúrate de que este archivo establece la conexión $conexion
 
 session_start(); // Iniciar sesión para manejar el estado de inicio de sesión
 
@@ -14,7 +14,7 @@ if (isset($_POST['nombre_usuario']) && isset($_POST['correo']) && isset($_POST['
     $Contrasena = $_POST['contrasena'];
 
     // Preparar consulta SQL para seleccionar el usuario
-    $sql = "SELECT NombreUsuario, ContrasenaHash, Rol FROM perfilesusuario WHERE NombreUsuario = ? AND CorreoElectronico = ?";
+    $sql = "SELECT NombreUsuario, ContrasenaHash, Rol FROM viv_perfilesusuario WHERE NombreUsuario = ? AND CorreoElectronico = ?";
     $stmt = $conexion->prepare($sql);
 
     if ($stmt === false) {

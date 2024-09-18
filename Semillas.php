@@ -59,37 +59,55 @@
     </div>
 </nav>
 
-    <!-- Sección de registro de usuario -->
-    <section id="Registro">
+    <!-- Sección de nuestras plantas -->
+    <section id="plantas">
         <div class="container">
-            <h4>Registrarse</h4>
-            <form action="http://localhost/Proyecto/Registro.php" method="POST">
-                <div class="mb-3">
-                    <label for="nombre_usuario" class="form-label">Nombre de Usuario:</label>
-                    <input type="text" id="nombre_usuario" name="nombre_usuario" required class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="nombre_completo" class="form-label">Nombre Completo:</label>
-                    <input type="text" id="nombre_completo" name="nombre_completo" required class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="correo" class="form-label">Correo Electrónico:</label>
-                    <input type="email" id="correo" name="correo" required class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="contrasena" class="form-label">Contraseña:</label>
-                    <input type="password" id="contrasena" name="contrasena" required class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="telefono" class="form-label">Número Telefónico:</label>
-                    <input type="tel" id="telefono" name="telefono" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label for="direccion" class="form-label">Dirección:</label>
-                    <input type="text" id="direccion" name="direccion" class="form-control">
-                </div>
-                <button type="submit" class="btn-register">Registrar</button>
-            </form>
+            <h4>Nuestras Semillas</h4>
+            <div class="row">
+                <?php
+                include 'connection.php'; // Incluye el archivo de conexión
+
+                // Asegúrate de validar y sanitizar el parámetro para evitar SQL Injection
+                $categoria_id = isset($_GET['categoria_id']) ? intval($_GET['categoria_id']) : 4;
+
+                // Consulta SQL para obtener productos de la categoría especificada
+                $sql = "SELECT Nombre, Descripcion, Valor, URL_Imagen FROM viv_productos WHERE CategoriaID = ?";
+                $stmt = $conexion->prepare($sql);
+
+                // Verificar si la preparación de la consulta fue exitosa
+                if ($stmt === false) {
+                    die('Error al preparar la consulta: ' . $conexion->error);
+                }
+
+                $stmt->bind_param("i", $categoria_id);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        // Formatear el valor para mostrarlo sin decimales y con separador de miles
+                        $valor_formateado = number_format($row["Valor"], 0, '.', ',');
+                        echo '    <div class="col-md-6 col-lg-2 col-sm-12 mt-2">';
+                        echo '        <div class="card">';
+                        echo '            <img src="http://localhost/proyecto_vivero/Multimedia/' . htmlspecialchars($row["URL_Imagen"], ENT_QUOTES, 'UTF-8') . '" class="card-img-top w-100 img-fluid" alt="' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '">';
+                        echo '            <div class="card-body">';
+                        echo '                <h5 class="card-title">' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '</h5>';
+                        echo '                <p class="card-text description">' . htmlspecialchars($row["Descripcion"], ENT_QUOTES, 'UTF-8') . '</p>';
+                        echo '            </div>';
+                        echo '            <div class="card-footer">';
+                        echo '                <p class="card-text"><strong>Precio:</strong> $' . $valor_formateado . '</p>';
+                        echo '                <button class="btn btn-outline-success agregar-carrito" data-nombre="' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '" data-precio="' . $row["Valor"] . '">Agregar al carrito</button>';
+                        echo '            </div>';
+                        echo '        </div>';
+                        echo '    </div>';
+                    }
+                } else {
+                    echo "No hay productos en esta categoría.";
+                }
+                $stmt->close();
+                $conexion->close();
+                ?>
+            </div>
         </div>
     </section>
 
@@ -98,19 +116,18 @@
         <div id="contenido" style="display: none;">
             <h2>¡Hola! ¿En qué puedo ayudarte?</h2>
             <p>Escríbenos por WhatsApp para obtener asistencia inmediata.</p>
-            <a href="https://wa.me/tunumerodetelefono" target="_blank" class="whatsapp-btn">
-                <img src="Multimedia/Wathsapp.jpg" alt="WhatsApp" width="50px" height="50px">
-            </a>
+            <!-- Aquí puedes colocar el enlace de WhatsApp -->
+            <a href="https://wa.me/tunumerodetelefono" target="_blank" class="whatsapp-btn"><img src="Multimedia/Wathsapp.jpg" alt="WhatsApp" width="50px" height="50px"></a>
         </div>
     </div>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <button class="btn btn-success" onclick="window.location.href='Desarrolladores.html';">Desarrolladores</button>
-        <p>&copy; 2024 Vivero Plantas Nuevas Vida. Todos los derechos reservados.</p>
-    </div>
-</footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <button class="btn btn-success" onclick="window.location.href='Desarrolladores.html';">Desarrolladores</button>
+            <p>&copy; 2024 Vivero Plantas Nuevas Vida. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

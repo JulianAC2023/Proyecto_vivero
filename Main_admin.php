@@ -68,10 +68,10 @@ if (!isset($_SESSION['nombre_usuario'])) {
                         <option value="">Selecciona un estado</option>
                         <?php
                         // Incluir el archivo de conexión
-                        include 'index.php'; // Asegúrate de que 'index.php' contiene la conexión correcta
+                        include 'connection.php'; // Asegúrate de que 'index.php' contiene la conexión correcta
 
                         // Consulta para obtener los estados únicos
-                        $estadoConsulta = "SELECT DISTINCT Estado FROM pedidos";
+                        $estadoConsulta = "SELECT DISTINCT Estado FROM viv_pedidos";
                         $resultadoEstados = $conexion->query($estadoConsulta);
 
                         if ($resultadoEstados) {
@@ -105,7 +105,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                 <div class="col-md-12">
                     <?php
                     // Incluir el archivo de conexión
-                    include 'index.php'; // Asegúrate de que 'index.php' contiene la conexión correcta
+                    include 'connection.php'; // Asegúrate de que 'index.php' contiene la conexión correcta
 
                     // Obtener filtros
                     $estado = isset($_GET['estado']) ? $_GET['estado'] : '';
@@ -113,9 +113,9 @@ if (!isset($_SESSION['nombre_usuario'])) {
 
                     // Crear consulta SQL con filtros
                     $consulta = "SELECT a.PedidoID, b.NombreCompleto, c.Nombre AS Producto, a.Cantidad, a.FechaPedido, a.Total, a.Estado
-                                  FROM pedidos a
-                                  LEFT JOIN perfilesusuario b ON b.UsuarioID = a.UsuarioID
-                                  LEFT JOIN productos c ON c.ProductoID = a.ProductoID
+                                  FROM viv_pedidos a
+                                  LEFT JOIN viv_perfilesusuario b ON b.UsuarioID = a.UsuarioID
+                                  LEFT JOIN viv_productos c ON c.ProductoID = a.ProductoID
                                   WHERE 1=1";
                     
                     if ($estado) {

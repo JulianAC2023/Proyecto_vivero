@@ -43,11 +43,11 @@ if (!isset($_SESSION['nombre_usuario'])) {
                         Productos
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="Plantas.html">Plantas</a></li>
-                        <li><a class="dropdown-item" href="Accesorios.html">Accesorios</a></li>
-                        <li><a class="dropdown-item" href="Abonos.html">Abonos</a></li>
-                        <li><a class="dropdown-item" href="Semillas.html">Semillas</a></li>
-                        <li><a class="dropdown-item" href="Herramientas.html">Herramientas</a></li>
+                        <li><a class="dropdown-item" href="Plantas.php">Plantas</a></li>
+                        <li><a class="dropdown-item" href="Accesorios.php">Accesorios</a></li>
+                        <li><a class="dropdown-item" href="Abonos.php">Abonos</a></li>
+                        <li><a class="dropdown-item" href="Semillas.php">Semillas</a></li>
+                        <li><a class="dropdown-item" href="Herramientas.php">Herramientas</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
