@@ -61,8 +61,8 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     <select name="productoID" id="productoID" class="form-select form-select-sm">
                         <option value="">Todos</option>
                         <?php
-                        include 'index.php';
-                        $productosID = $conexion->query("SELECT DISTINCT ProductoID FROM productos");
+                        include 'connection.php';
+                        $productosID = $conexion->query("SELECT DISTINCT ProductoID FROM viv_productos");
                         while ($productoID = $productosID->fetch_assoc()) {
                             echo "<option value='" . $productoID['ProductoID'] . "'>" . $productoID['ProductoID'] . "</option>";
                         }
@@ -74,7 +74,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     <select name="nombreProducto" id="nombreProducto" class="form-select form-select-sm">
                         <option value="">Todos</option>
                         <?php
-                        $nombresProductos = $conexion->query("SELECT DISTINCT Nombre FROM productos");
+                        $nombresProductos = $conexion->query("SELECT DISTINCT Nombre FROM viv_productos");
                         while ($nombreProducto = $nombresProductos->fetch_assoc()) {
                             echo "<option value='" . $nombreProducto['Nombre'] . "'>" . $nombreProducto['Nombre'] . "</option>";
                         }
@@ -86,7 +86,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     <select name="categoria" id="categoria" class="form-select form-select-sm">
                         <option value="">Todas</option>
                         <?php
-                        $categorias = $conexion->query("SELECT CategoriaID, Nombre FROM categorias");
+                        $categorias = $conexion->query("SELECT CategoriaID, Nombre FROM viv_categorias");
                         while ($categoria = $categorias->fetch_assoc()) {
                             echo "<option value='" . $categoria['CategoriaID'] . "'>" . $categoria['Nombre'] . "</option>";
                         }
@@ -98,7 +98,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     <select name="proveedor" id="proveedor" class="form-select form-select-sm">
                         <option value="">Todos</option>
                         <?php
-                        $proveedores = $conexion->query("SELECT DISTINCT ProveedorID, Nombre FROM proveedores");
+                        $proveedores = $conexion->query("SELECT DISTINCT ProveedorID, Nombre FROM viv_proveedores");
                         while ($proveedor = $proveedores->fetch_assoc()) {
                             echo "<option value='" . $proveedor['ProveedorID'] . "'>" . $proveedor['Nombre'] . "</option>";
                         }
@@ -136,9 +136,9 @@ if (!isset($_SESSION['nombre_usuario'])) {
 
                     // Crear consulta SQL con filtros
                     $consulta = "SELECT a.ProductoID, a.Nombre, a.Descripcion, a.Valor, a.CantidadDisponible, b.Nombre AS Categoria, c.Nombre AS Proveedor 
-                                 FROM productos a
-                                 LEFT JOIN categorias b ON b.CategoriaID = a.CategoriaID
-                                 LEFT JOIN proveedores c ON c.ProveedorID = a.ProveedorID
+                                 FROM viv_productos a
+                                 LEFT JOIN viv_categorias b ON b.CategoriaID = a.CategoriaID
+                                 LEFT JOIN viv_proveedores c ON c.ProveedorID = a.ProveedorID
                                  WHERE a.Valor BETWEEN $min_valor AND $max_valor";
                     
                     if ($productoID) {
@@ -196,7 +196,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
 <footer>
     <div class="container">
         <button class="btn btn-success" onclick="window.location.href='Desarrolladores.html';">Desarrolladores</button>
-        <p>&copy; 2024 Vivero Plantas Nuevas Vida. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Vivero Plantas Nueva Vida. Todos los derechos reservados.</p>
     </div>
 </footer>
 

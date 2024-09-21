@@ -18,6 +18,12 @@ if (!isset($_SESSION['nombre_usuario'])) {
 </head>
 <body>
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="navbar-text">
+            Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre_usuario']); ?>
+        </span>
+</nav>
+
     <!-- Botones de redes sociales -->
 <div class="redes-sociales">
     <a href="https://www.facebook.com/" class="icon-facebook"></a>
@@ -26,46 +32,22 @@ if (!isset($_SESSION['nombre_usuario'])) {
 </div>
 
 
-<!-- Barra de navegación -->
-<nav class="navbar navbar-expand-lg navbar-light bg-gray">
-    <div class="container">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Inicio</a>
-                </li>
-                <!-- Menú desplegable para productos -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Productos
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="Plantas.php">Plantas</a></li>
-                        <li><a class="dropdown-item" href="Accesorios.php">Accesorios</a></li>
-                        <li><a class="dropdown-item" href="Abonos.php">Abonos</a></li>
-                        <li><a class="dropdown-item" href="Semillas.php">Semillas</a></li>
-                        <li><a class="dropdown-item" href="Herramientas.php">Herramientas</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Login.html">Iniciar Sesión</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Registro.html">Registrarse</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Carrito.html">Carrito</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Contacto.html">Contacto</a>
-                </li>
-            </ul>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-gray">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="Main.php">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Productos clientes.php">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Carrito clientes.php">Carrito</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Contacto clientes.php">Contacto</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <!-- Sección de contacto -->
     <section id="contacto">
@@ -109,7 +91,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
 <footer>
     <div class="container">
         <button class="btn btn-success" onclick="window.location.href='Desarrolladores.html';">Desarrolladores</button>
-        <p>&copy; 2024 Vivero Plantas Nuevas Vida. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Vivero Plantas Nueva Vida. Todos los derechos reservados.</p>
     </div>
 </footer>
 
@@ -131,6 +113,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
         });
 
     </script>
+    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="Script.js"></script>
 </body>

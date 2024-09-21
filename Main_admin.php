@@ -170,7 +170,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
 <footer>
     <div class="container">
         <button class="btn btn-success" onclick="window.location.href='Desarrolladores.html';">Desarrolladores</button>
-        <p>&copy; 2024 Vivero Plantas Nuevas Vida. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Vivero Plantas Vida. Todos los derechos reservados.</p>
     </div>
 </footer>
 
