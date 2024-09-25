@@ -135,7 +135,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     $max_valor = isset($_GET['max_valor']) && $_GET['max_valor'] !== '' ? $_GET['max_valor'] : PHP_INT_MAX;
 
                     // Crear consulta SQL con filtros
-                    $consulta = "SELECT a.ProductoID, a.Nombre, a.Descripcion, a.Valor, a.CantidadDisponible, b.Nombre AS Categoria, c.Nombre AS Proveedor 
+                    $consulta = "SELECT a.ProductoID, a.URL_Imagen, a.Nombre, a.Descripcion, a.Valor, a.CantidadDisponible, b.Nombre AS Categoria, c.Nombre AS Proveedor 
                                  FROM viv_productos a
                                  LEFT JOIN viv_categorias b ON b.CategoriaID = a.CategoriaID
                                  LEFT JOIN viv_proveedores c ON c.ProveedorID = a.ProveedorID
@@ -162,11 +162,12 @@ if (!isset($_SESSION['nombre_usuario'])) {
 
                     if ($resultado->num_rows > 0) {
                         echo "<table class='table table-striped table-bordered'>";
-                        echo "<thead><tr><th>ProductoID</th><th>Nombre</th><th>Descripción</th><th>Valor</th><th>Cantidad Disponible</th><th>Categoría</th><th>Proveedor</th><th>Acción</th></tr></thead>";
+                        echo "<thead><tr><th>ProductoID</th><th>Imagen</th><th>Nombre</th><th>Descripción</th><th>Valor</th><th>Cantidad Disponible</th><th>Categoría</th><th>Proveedor</th><th>Acción</th></tr></thead>";
                         echo "<tbody>";
                         while ($fila = $resultado->fetch_assoc()) {
                             echo "<tr>
                                     <td>" . htmlspecialchars($fila["ProductoID"]) . "</td>
+                                    <td><img src='" . htmlspecialchars($fila["URL_Imagen"]) . "' alt='Imagen de producto' width='100'></td>
                                     <td>" . htmlspecialchars($fila["Nombre"]) . "</td>
                                     <td>" . htmlspecialchars($fila["Descripcion"]) . "</td>
                                     <td>" . htmlspecialchars($fila["Valor"]) . "</td>
