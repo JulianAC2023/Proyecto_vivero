@@ -46,9 +46,6 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     <a class="nav-link" href="Gestion de usuarios.php">Gestión de Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Configuracion.php">Configuración</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="Soporte.php">Soporte</a>
                 </li>
             </ul>

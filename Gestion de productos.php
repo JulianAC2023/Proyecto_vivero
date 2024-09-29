@@ -14,8 +14,37 @@ if (!isset($_SESSION['nombre_usuario'])) {
     <title>Panel de Control</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Styles.css">
+    <style>
+        .alert-container {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+        }
+    </style>
 </head>
+
 <body>
+    <!-- Modal para confirmación de eliminación -->
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar este producto?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Inicio</a>
         <span class="navbar-text">
@@ -41,17 +70,55 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     <a class="nav-link" href="Gestion de usuarios.php">Gestión de Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Configuracion.php">Configuración</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="Soporte.php">Soporte</a>
                 </li>
             </ul>
         </div>
     </nav>
 
+        <!-- Manejo de alertas -->
+        <div class="container mt-3">
+        <?php if (isset($_GET['mensaje'])): ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <?php echo htmlspecialchars($_GET['mensaje']); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+
+        <?php if (isset($_GET['error'])): ?>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <?php echo htmlspecialchars($_GET['error']); ?>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <div class='alert-container'>
+    <?php if (isset($_SESSION['mensaje'])): ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <?php echo htmlspecialchars($_SESSION['mensaje']); ?>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <?php unset($_SESSION['mensaje']); // Limpiar mensaje después de mostrar ?>
+    <?php endif; ?>
+    
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php echo htmlspecialchars($_SESSION['error']); ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <?php unset($_SESSION['error']); // Limpiar mensaje después de mostrar ?>
+    <?php endif; ?>
+    </div>
+
+    
     <section id="dashboard" class="container my-4">
         <h2>Estado de productos</h2>
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <button class="btn btn-success" onclick="window.location.href='agregar_producto.php';">Agregar Producto</button>
+            </div>
+        </div>
 
         <!-- Formulario de filtros -->
         <form method="GET" class="mb-4">
@@ -64,7 +131,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                         include 'connection.php';
                         $productosID = $conexion->query("SELECT DISTINCT ProductoID FROM viv_productos");
                         while ($productoID = $productosID->fetch_assoc()) {
-                            echo "<option value='" . $productoID['ProductoID'] . "'>" . $productoID['ProductoID'] . "</option>";
+                            echo "<option value='" . htmlspecialchars($productoID['ProductoID']) . "'>" . htmlspecialchars($productoID['ProductoID']) . "</option>";
                         }
                         ?>
                     </select>
@@ -76,7 +143,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                         <?php
                         $nombresProductos = $conexion->query("SELECT DISTINCT Nombre FROM viv_productos");
                         while ($nombreProducto = $nombresProductos->fetch_assoc()) {
-                            echo "<option value='" . $nombreProducto['Nombre'] . "'>" . $nombreProducto['Nombre'] . "</option>";
+                            echo "<option value='" . htmlspecialchars($nombreProducto['Nombre']) . "'>" . htmlspecialchars($nombreProducto['Nombre']) . "</option>";
                         }
                         ?>
                     </select>
@@ -88,7 +155,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                         <?php
                         $categorias = $conexion->query("SELECT CategoriaID, Nombre FROM viv_categorias");
                         while ($categoria = $categorias->fetch_assoc()) {
-                            echo "<option value='" . $categoria['CategoriaID'] . "'>" . $categoria['Nombre'] . "</option>";
+                            echo "<option value='" . htmlspecialchars($categoria['CategoriaID']) . "'>" . htmlspecialchars($categoria['Nombre']) . "</option>";
                         }
                         ?>
                     </select>
@@ -100,7 +167,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                         <?php
                         $proveedores = $conexion->query("SELECT DISTINCT ProveedorID, Nombre FROM viv_proveedores");
                         while ($proveedor = $proveedores->fetch_assoc()) {
-                            echo "<option value='" . $proveedor['ProveedorID'] . "'>" . $proveedor['Nombre'] . "</option>";
+                            echo "<option value='" . htmlspecialchars($proveedor['ProveedorID']) . "'>" . htmlspecialchars($proveedor['Nombre']) . "</option>";
                         }
                         ?>
                     </select>
@@ -148,10 +215,10 @@ if (!isset($_SESSION['nombre_usuario'])) {
                         $consulta .= " AND a.Nombre LIKE '%" . $conexion->real_escape_string($nombreProducto) . "%'";
                     }
                     if ($categoria) {
-                        $consulta .= " AND a.CategoriaID LIKE '%" . $conexion->real_escape_string($categoria) . "%'";
+                        $consulta .= " AND a.CategoriaID = '" . $conexion->real_escape_string($categoria) . "'";
                     }
                     if ($proveedor) {
-                        $consulta .= " AND a.ProveedorID LIKE '%" . $conexion->real_escape_string($proveedor) . "%'";
+                        $consulta .= " AND a.ProveedorID = '" . $conexion->real_escape_string($proveedor) . "'";
                     }
 
                     $resultado = $conexion->query($consulta);
@@ -162,12 +229,12 @@ if (!isset($_SESSION['nombre_usuario'])) {
 
                     if ($resultado->num_rows > 0) {
                         echo "<table class='table table-striped table-bordered'>";
-                        echo "<thead><tr><th>ProductoID</th><th>Imagen</th><th>Nombre</th><th>Descripción</th><th>Valor</th><th>Cantidad Disponible</th><th>Categoría</th><th>Proveedor</th><th>Acción</th></tr></thead>";
+                        echo "<thead><tr><th>ProductoID</th><th>Imagen</th><th>Nombre</th><th>Descripción</th><th>Valor</th><th>Cantidad Disponible</th><th>Categoría</th><th>Proveedor</th><th>Editar</th><th>Eliminar</th></tr></thead>";
                         echo "<tbody>";
                         while ($fila = $resultado->fetch_assoc()) {
                             echo "<tr>
                                     <td>" . htmlspecialchars($fila["ProductoID"]) . "</td>
-                                    <td><img src='" . htmlspecialchars($fila["URL_Imagen"]) . "' alt='Imagen de producto' width='100'></td>
+                                    <td><img src='" . htmlspecialchars($fila["URL_Imagen"]) . "' alt='Imagen de producto' style='width: 50px; height: auto;'></td>
                                     <td>" . htmlspecialchars($fila["Nombre"]) . "</td>
                                     <td>" . htmlspecialchars($fila["Descripcion"]) . "</td>
                                     <td>" . htmlspecialchars($fila["Valor"]) . "</td>
@@ -175,6 +242,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
                                     <td>" . htmlspecialchars($fila["Categoria"]) . "</td>
                                     <td>" . htmlspecialchars($fila["Proveedor"]) . "</td>
                                     <td><a href='editar_producto.php?ProductoID=" . $fila["ProductoID"] . "' class='btn btn-warning btn-sm'>Editar</a></td>
+                                    <td><a href='#' class='btn btn-danger btn-sm open-confirmation' data-bs-toggle='modal' data-bs-target='#confirmDeleteModal' data-producto-id='" . $fila["ProductoID"] . "'>Eliminar</a></td>
                                   </tr>";
                         }
                         echo "</tbody></table>";
@@ -189,17 +257,41 @@ if (!isset($_SESSION['nombre_usuario'])) {
         </div>
     </section>
 
+    <script>
+    let productoIdParaEliminar;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Obtener el producto ID cuando se abre el modal
+        const openConfirmationButtons = document.querySelectorAll('.open-confirmation');
+        openConfirmationButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                productoIdParaEliminar = this.getAttribute('data-producto-id');
+            });
+        });
+
+        // Manejar el clic en el botón de eliminar dentro del modal
+        const confirmDeleteButton = document.getElementById('confirmDeleteButton');
+        confirmDeleteButton.addEventListener('click', function () {
+            if (productoIdParaEliminar) {
+                window.location.href = 'eliminar_producto.php?ProductoID=' + productoIdParaEliminar;
+            } else {
+                alert("No se ha seleccionado un producto para eliminar.");
+            }
+        });
+    });
+    </script>
+
     <div class="container mt-5">
         <a href="logout.php" class="btn btn-danger">Cerrar Sesión</a>
     </div>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <button class="btn btn-success" onclick="window.location.href='Desarrolladores.html';">Desarrolladores</button>
-        <p>&copy; 2024 Vivero Plantas Nueva Vida. Todos los derechos reservados.</p>
-    </div>
-</footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <button class="btn btn-success" onclick="window.location.href='Desarrolladores.html';">Desarrolladores</button>
+            <p>&copy; 2024 Vivero Plantas Nueva Vida. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

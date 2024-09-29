@@ -14,6 +14,16 @@ if (!isset($_SESSION['nombre_usuario'])) {
     <title>Pagina principal</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="Styles.css">
+    <style>
+        .alert-container {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+        }
+    </style>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,9 +56,6 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     <a class="nav-link" href="Gestion de usuarios.php">Gestión de Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Configuracion.php">Configuración</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="Soporte.php">Soporte</a>
                 </li>
             </ul>
@@ -69,12 +76,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $updateQuery = "UPDATE viv_pedidos SET Estado = ?, Cantidad = ?, Total = ? WHERE PedidoID = ?";
     $stmt = $conexion->prepare($updateQuery);
     $stmt->bind_param("sidi", $estado, $cantidad, $total, $pedidoID);
-
+    echo "<div class='alert-container'>";
     if ($stmt->execute()) {
         echo "<div class='alert alert-success text-center' role='alert'>Pedido actualizado exitosamente.</div>";
     } else {
         echo "<div class='alert alert-danger text-center' role='alert'>Error al actualizar el pedido: " . $stmt->error . "</div>";
-    }    
+    }
+    echo "</div>";
+        
 }
 
 // Obtener los detalles del pedido

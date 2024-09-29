@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créditos de Desarrollo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #878080;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+        .credits-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px; /* Limita el ancho de los contenedores */
+        }
+        .credit {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 10px;
+            background: rgb(0, 0, 0);
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%; /* Hace que el contenedor ocupe el 100% del ancho permitido */
+        }
+        .credit img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .button {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #218838;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #2d2d2d;
+            color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Créditos de Desarrollo</h1>
+
+    <h2>Equipo de Desarrollo</h2>
+    <div class="credits-container">
+        <div class="credit">
+            <img src="Multimedia/Julian Cardona.jpg" alt="Julian Andres Cardona Londoño">
+            <div>
+                <strong>Julian Andres Cardona Londoño</strong> <em>(Desarrollador Fullstack)</em>
+                <p>"Responsable del diseño y la interfaz de usuario y de la lógica del servidor y base de datos."</p>
+                <p>"Desarrollo de software"</p>
+                <p>"Análisis de datos"</p>
+                <p>"Manejo de lenguajes SQL, DAX, HTML, CSS, Javascript"</p>
+                <p>"Experto BI"</p>
+            </div>
+        </div>
+        <div class="credit">
+            <img src="ruta/a/foto-andres.jpg" alt="Andres Mauricio Osroio Gil">
+            <div>
+                <strong>Andres Mauricio Osroio Gil</strong> <em>(Desarrollador Backend)</em>
+                <p>"Encargado de la lógica del servidor y la base de datos."</p>
+            </div>
+        </div>
+    </div>
+
+    <h2>Agradecimientos</h2>
+    <p>Agradecemos a todas las personas que hicieron posible este proyecto y el empeño puesto en la marcha del proyecto.</p>
+
+    <a href="javascript:history.back()" class="button">Volver a la página anterior</a>
+
+</body>
+</html>

@@ -14,6 +14,16 @@ if (!isset($_SESSION['nombre_usuario'])) {
     <title>Panel de Control</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="Styles.css">
+    <style>
+        .alert-container {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+        }
+    </style>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -41,9 +51,6 @@ if (!isset($_SESSION['nombre_usuario'])) {
                     <a class="nav-link" href="Gestion de usuarios.php">Gestión de Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="Configuracion.php">Configuración</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="Soporte.php">Soporte</a>
                 </li>
             </ul>
@@ -51,7 +58,7 @@ if (!isset($_SESSION['nombre_usuario'])) {
     </nav>
 
 <?php
-include 'index.php'; // Conexión a la base de datos
+include 'connection.php'; // Conexión a la base de datos
 
 // Obtener el ID del producto
 $producto_id = isset($_GET['ProductoID']) ? intval($_GET['ProductoID']) : 0;
@@ -67,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $proveedor_id = $_POST['proveedor_id'];
 
     // Actualizar los datos del producto en la base de datos
-    $consulta = "UPDATE productos SET 
+    $consulta = "UPDATE viv_productos SET 
                     Nombre = '$nombre', 
                     Descripcion = '$descripcion', 
                     Valor = '$valor', 
@@ -77,23 +84,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ProveedorID = '$proveedor_id' 
                 WHERE ProductoID = $producto_id";
 
-    if ($conexion->query($consulta)) {
-        echo "<p>Producto actualizado con éxito.</p>";
-    } else {
-        echo "<p>Error al actualizar el producto: " . $conexion->error . "</p>";
-    }
+                echo "<div class='alert-container'>";
+                if ($conexion->query($consulta)) {
+                    echo "<div class='alert alert-success text-center' role='alert'>Producto actualizado con éxito.</div>";
+                } else {
+                    echo "<div class='alert alert-danger text-center' role='alert'>Error al actualizar el producto: " . $conexion->error . "</div>";
+                }
+                echo "</div>";
+
 }
 
 // Obtener los datos del producto
-$consulta = "SELECT * FROM productos WHERE ProductoID = $producto_id";
+$consulta = "SELECT * FROM viv_productos WHERE ProductoID = $producto_id";
 $resultado = $conexion->query($consulta);
 $producto = $resultado->fetch_assoc();
 
 // Obtener las categorías de la base de datos
-$categorias = $conexion->query("SELECT CategoriaID, Nombre FROM categorias");
+$categorias = $conexion->query("SELECT CategoriaID, Nombre FROM viv_categorias");
 
 // Obtener los proveedores de la base de datos
-$proveedores = $conexion->query("SELECT ProveedorID, Nombre FROM proveedores");
+$proveedores = $conexion->query("SELECT ProveedorID, Nombre FROM viv_proveedores");
 ?>
 
 <body>
@@ -152,3 +162,15 @@ $proveedores = $conexion->query("SELECT ProveedorID, Nombre FROM proveedores");
 <?php
 $conexion->close();
 ?>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <button class="btn btn-success" onclick="window.location.href='Desarrolladores.html';">Desarrolladores</button>
+        <p>&copy; 2024 Vivero Plantas Nueva Vida. Todos los derechos reservados.</p>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

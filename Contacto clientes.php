@@ -14,6 +14,15 @@ if (!isset($_SESSION['nombre_usuario'])) {
     <title>'Pagina principal'</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="Styles.css">
+    <style>
+        .alert-container {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+        }
+    </style>
     
 </head>
 <body>
@@ -23,14 +32,6 @@ if (!isset($_SESSION['nombre_usuario'])) {
             Bienvenido, <?php echo htmlspecialchars($_SESSION['nombre_usuario']); ?>
         </span>
 </nav>
-
-    <!-- Botones de redes sociales -->
-<div class="redes-sociales">
-    <a href="https://www.facebook.com/" class="icon-facebook"></a>
-    <a href="https://x.com/" class="icon-twitter"></a>
-    <a href="https://www.instagram.com/" class="icon-instagram"></a>
-</div>
-
 
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-gray">
@@ -86,7 +87,15 @@ if (!isset($_SESSION['nombre_usuario'])) {
     <div class="container mt-5">
         <a href="logout.php" class="btn btn-danger">Cerrar Sesión</a>
     </div>
-   
+
+<!-- Botones de redes sociales -->
+<div class="redes-sociales">
+    <a href="https://www.facebook.com/" class="icon-facebook"></a>
+    <a href="https://x.com/" class="icon-twitter"></a>
+    <a href="https://www.instagram.com/" class="icon-instagram"></a>
+</div>
+
+
 <!-- Footer -->
 <footer>
     <div class="container">

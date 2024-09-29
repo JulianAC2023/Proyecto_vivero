@@ -9,13 +9,6 @@
 </head>
 <body>
 
-    <!-- Botones de redes sociales -->
-    <div class="redes-sociales">
-        <a href="https://www.facebook.com/" class="icon-facebook"></a>
-        <a href="https://x.com/" class="icon-twitter"></a>
-        <a href="https://www.instagram.com/" class="icon-instagram"></a>
-    </div>
-
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-gray">
         <div class="container">
@@ -110,7 +103,7 @@
                     $valor_formateado = number_format($row["Valor"], 0, '.', ',');
                     echo '<div class="col-md-6 col-lg-2 col-sm-12 mt-2">';
                     echo '    <div class="card">';
-                    echo '        <img src="http://localhost/proyecto_vivero/Multimedia/' . htmlspecialchars($row["URL_Imagen"], ENT_QUOTES, 'UTF-8') . '" class="card-img-top w-100 img-fluid" alt="' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '">';
+                    echo '        <img src="http://localhost/proyecto_vivero/' . htmlspecialchars($row["URL_Imagen"], ENT_QUOTES, 'UTF-8') . '" class="card-img-top w-100 img-fluid" alt="' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '">';
                     echo '        <div class="card-body">';
                     echo '            <h5 class="card-title">' . htmlspecialchars($row["Nombre"], ENT_QUOTES, 'UTF-8') . '</h5>';
                     echo '            <p class="card-text description">' . htmlspecialchars($row["Descripcion"], ENT_QUOTES, 'UTF-8') . '</p>';
@@ -144,6 +137,13 @@
             </a>
         </div>
     </div>
+
+<!-- Botones de redes sociales -->
+<div class="redes-sociales">
+    <a href="https://www.facebook.com/" class="icon-facebook"></a>
+    <a href="https://x.com/" class="icon-twitter"></a>
+    <a href="https://www.instagram.com/" class="icon-instagram"></a>
+</div>    
 
     <!-- Footer -->
     <footer>

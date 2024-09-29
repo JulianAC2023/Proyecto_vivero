@@ -24,14 +24,6 @@ if (!isset($_SESSION['nombre_usuario'])) {
         </span>
 </nav>
 
-    <!-- Botones de redes sociales -->
-<div class="redes-sociales">
-    <a href="https://www.facebook.com/" class="icon-facebook"></a>
-    <a href="https://x.com/" class="icon-twitter"></a>
-    <a href="https://www.instagram.com/" class="icon-instagram"></a>
-</div>
-
-
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-light bg-gray">
         <div class="container">
@@ -106,6 +98,13 @@ if (!isset($_SESSION['nombre_usuario'])) {
 <div class="container mt-5">
         <a href="logout.php" class="btn btn-danger">Cerrar Sesión</a>
     </div>
+
+<!-- Botones de redes sociales -->
+<div class="redes-sociales">
+    <a href="https://www.facebook.com/" class="icon-facebook"></a>
+    <a href="https://x.com/" class="icon-twitter"></a>
+    <a href="https://www.instagram.com/" class="icon-instagram"></a>
+</div>
 
 <!-- Footer -->
 <footer>

@@ -193,7 +193,7 @@ footer {
 }
 
 #toggleBtn:active {
-    background-color: #0056b3; /* Cambia el color de fondo a un azul más oscuro cuando se presiona */
+    background-color: #4300de; /* Cambia el color de fondo a un azul más oscuro cuando se presiona */
     transform: scale(1); /* Restablece el tamaño al original */
 }
 
