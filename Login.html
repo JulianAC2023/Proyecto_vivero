@@ -29,6 +29,79 @@
         </div>
     </nav>
 
+    <!-- Contenedor de credenciales en la parte superior -->
+<section id="credenciales" class="mt-3">
+    <div class="container">
+        <h5 class="mb-3 text-center">Credenciales de Prueba</h5>
+        <div class="row">
+            <!-- Credenciales Cliente -->
+            <div class="col-md-6 text-center">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h6 class="card-title text-primary">Cliente</h6>
+                        <!-- Botón para mostrar credenciales en el modal -->
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#credencialesModalCliente">
+                            Ver Credenciales
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Credenciales Admin -->
+            <div class="col-md-6 text-center">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h6 class="card-title text-primary">Administrador</h6>
+                        <!-- Botón para mostrar credenciales en el modal -->
+                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#credencialesModalAdmin">
+                            Ver Credenciales
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal Cliente -->
+<div class="modal fade" id="credencialesModalCliente" tabindex="-1" aria-labelledby="credencialesModalClienteLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="credencialesModalClienteLabel">Credenciales Cliente</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Usuario:</strong> pruebas1</p>
+        <p><strong>Email:</strong> pruebas1@pruebas.com</p>
+        <p><strong>Contraseña:</strong> 123456789</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Admin -->
+<div class="modal fade" id="credencialesModalAdmin" tabindex="-1" aria-labelledby="credencialesModalAdminLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="credencialesModalAdminLabel">Credenciales Administrador</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Usuario:</strong> pruebas2</p>
+        <p><strong>Email:</strong> pruebas2@pruebas.com</p>
+        <p><strong>Contraseña:</strong> 123456789</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <!-- Sección de registro -->
     <section id="registro" class="mt-5">
         <div class="container">
@@ -50,18 +123,6 @@
             </form>
         </div>
     </section>
-    <div class="credenciales">
-        <p><strong>Credenciales de prueba cliente:</strong></p>
-        <p>Nombre de usuario: <strong>pruebas1</strong></p>
-        <p>Email: <strong>pruebas1@pruebas.com</strong></p>
-        <p>Contraseña: <strong>123456789</strong></p>
-    </div>
-    <div class="credenciales">
-        <p><strong>Credenciales de prueba admin:</strong></p>
-        <p>Nombre de usuario: <strong>pruebas2</strong></p>
-        <p>Email: <strong>pruebas2@pruebas.com</strong></p>
-        <p>Contraseña: <strong>123456789</strong></p>
-    </div>
 
 </section>
 

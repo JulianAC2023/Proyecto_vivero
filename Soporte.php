@@ -65,8 +65,9 @@ if (!isset($_SESSION['nombre_usuario'])) {
         <h2>Documentación</h2>
         <p>Puedes descargar los siguientes manuales:</p>
         <ul>
-            <li><a href="manual_tecnico.pdf" class="btn btn-info" download>Descargar Manual Técnico</a></li>
-            <li><a href="manual_usuario.pdf" class="btn btn-info" download>Descargar Manual de Usuario</a></li>
+        <li><a href="Documentacion/MANUAL DE INSTALACIÓN VIVERO PNV.pdf" class="btn btn-info" download>Descargar de instalacion</a></li>
+            <li><a href="Documentacion/MANUAL TÉCNICO VIVERO PNV.pdf" class="btn btn-info" download>Descargar Manual Técnico</a></li>
+            <li><a href="Documentacion/MANUAL DE USUARIO VIVERO PNV.pdf" class="btn btn-info" download>Descargar Manual de Usuario</a></li>
         </ul>
 
         <h2>Formulario de Contacto</h2>

@@ -76,12 +76,7 @@ nav ul li a:focus {
     margin-bottom: 40px;
 }
 
-img {
-    width: 80px !important;
-    height: 140px !important;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+
 
 .producto h3 {
     margin-top: 20px;
@@ -266,6 +261,7 @@ footer {
     transform: scale(1.05); /* Esto aplica el efecto de escalado cuando se pasa el mouse */
 }
 
+
 .btn-success{
     background-color: #A8D5BA; /* Color de fondo verde */
     color: #000000; /* Color del texto blanco */
@@ -324,3 +320,7 @@ footer {
     transform: scale(1.05); /* Esto aplica el efecto de escalado cuando se pasa el mouse */
 }
 
+nav .Logo img {
+    height: 40px !important;
+    width: auto !important;
+}
